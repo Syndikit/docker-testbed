@@ -7,6 +7,6 @@ RUN apt-get install git nginx curl \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN apt-get update -y
-RUN apt-get install nmap -y 
+RUN apt-get install nmap inetutils-traceroute -y 
 EXPOSE 80 443
 CMD ["nginx"]

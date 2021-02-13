@@ -7,20 +7,12 @@ networks:
       config:
         - subnet: 10.1.0.0/24
 services:
-  nmap:
-    container_name: nmap
-    image: ubuntu:18.04
-    build: nmap
-    ports:
-      - 8001:80
-    networks:
-      test:
-        ipv4_address: 10.1.0.15
-  apache:
-    container_name: apache
-    image: nginx:latest
+  snort:
+    container_name: snort
+    build: snort
     ports: 
-      - 5015:80
+      - 8007:80
     networks:
       test:
         ipv4_address: 10.1.0.100
+    restart: on-failure
