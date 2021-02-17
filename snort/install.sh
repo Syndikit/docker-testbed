@@ -1,5 +1,8 @@
 apt update -y && apt upgrade -y 
+apt-get install openssh-server -y
 mkdir ~/snort_src && cd ~/snort_src
+wget https://www.snort.org/downloads/snort/daq-2.0.7.tar.gz
+wget https://www.snort.org/downloads/snort/snort-2.9.17.tar.gz
 tar -xvzf daq-2.0.7.tar.gz
 cd daq-2.0.7
 autoreconf -f -i
@@ -7,6 +10,7 @@ autoreconf -f -i
 cd ~/snort_src
 tar -xvzf snort-2.9.17.tar.gz
 cd snort-2.9.17
+./configure && make && sudo make install
 sudo ln -s /usr/local/bin/snort /usr/sbin/snort
 sudo groupadd snort
 sudo useradd snort -r -s /sbin/nologin -c SNORT_IDS -g snort
@@ -28,4 +32,3 @@ sudo cp ~/snort_src/snort-2.9.17/etc/*.map /etc/snort
 sudo rm ../daq-2.0.7.tar.gz
 sudo rm ../snort-2.9.17.tar.gz 
 sudo ldconfig
-sudo ln -s /usr/local/bin/snort /usr/sbin/snort
