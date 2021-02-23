@@ -16,3 +16,27 @@ services:
       test:
         ipv4_address: 10.1.0.100
     restart: on-failure
+  nmap:
+    container_name: nmap
+    build: nmap
+    ports:
+      - 8009:80
+      - 8008:443
+    networks:
+      test:
+        ipv4_address: 10.1.0.101
+    restart: on-failure
+  splunk:
+    image: splunk/splunk:latest
+    # username is admin
+    environment: 
+    - "SPLUNK_START_ARGS= --accept-license" 
+    - "SPLUNK_PASSWORD=thesis2021"
+    ports:
+      - 8010:80
+      - 8011:443
+      - 8012:8000
+    networks:
+      test:
+        ipv4_address: 10.1.0.102
+    restart: on-failure
