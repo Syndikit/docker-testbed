@@ -36,7 +36,11 @@ services:
       - 8010:80
       - 8011:443
       - 8012:8000
+    volumes:
+      - /Users/michael/Desktop/docker-testbed/pcaps:/usr/share/pcaps:ro
     networks:
       test:
         ipv4_address: 10.1.0.102
     restart: on-failure
+    #graduation849@gmail.com
+    # jaU+Y_X\\3b=T\!%
